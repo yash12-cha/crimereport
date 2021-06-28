@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+<head>
+    <title>Crime Report | About Us</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link href='{% static 'css_sheet.css' %}' rel='stylesheet'>
+<style>
+.footer1
+{
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: #04AA6D;
+    color: white;
+    text-align: center;
+    padding-top: 10px;
+}
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Fredoka One', cursive;
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  font-family: 'Fredoka One', cursive;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.9)), url('{% static "img/dash.png" %}');
+  background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+input {
+  outline: none;
+  border: none;
+  background: transparent;
+}
+
+.login-box {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  width: 500px;
+  padding: 40px;
+  transform: translate(-50%, -50%);
+  background-color: rgba(0, 0, 0, 0.5);
+  box-shadow: 0 15px 25px rgba(0, 0, 0, 0.6);
+  border-radius: 10px;
+}
+
+.login-box h2 {
+  margin: 0 0 30px;
+  padding: 0;
+  color: #fff;
+  text-align: center;
+}
+
+.login-box .user-box {
+  position: relative;
+}
+
+.login-box .user-box label {
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 0px 0;
+  color: #fff;
+  transition: 500ms;
+  font-size: 16px;
+  pointer-events: none;
+}
+
+.login-box .user-box .input {
+  width: 100%;
+  padding: 0px 0;
+  color: #fff;
+  margin-bottom: 30px;
+  border-bottom: 1px solid #fff;
+}
+
+.input:active ~ label {
+  top: -20px;
+  color: #03e9f4;
+  font-size: 12px;
+ }
+
+.input:focus ~ label {
+ top: -20px;
+ color: #03e9f4;
+ font-size: 12px;
+}
+
+.input:valid ~ label  {
+  top: -20px;
+  color: #03e9f4;
+  font-size: 12px;
+ }
+
+
+.login-box form a {
+  position: relative;
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 16px;
+  text-decoration: none;
+  text-transform: uppercase;
+  overflow: hidden;
+  transition: all .5s;
+  margin-top: 40px;
+  letter-spacing: 4px;
+  color: #03e9f4;
+}
+#matter
+{
+  padding-top:0;
+}
+#but
+{
+  text-align: center;
+}
+
+</style>
+</head>
+<body style="margin:0">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <a class="navbar-brand" href="/"><img src='{% static "img/logo1.png" %}' width="55px"></a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item {% block homeactive %}  {% endblock homeactive %}">
+            <a class="nav-link" href="/sample">Home <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item {% block aboutactive %}  {% endblock aboutactive %}" >
+            <a class="nav-link" href="/about1">About</a>
+          </li>
+          <li class="nav-item {% block contactactive %}  {% endblock contactactive %} ">
+            <a class="nav-link" href="/contact1">Contact</a>
+          </li>
+          <li class="nav-item {% block reportactive %}  {% endblock reportactive %} ">
+            <a class="nav-link" href="/report">Report</a>
+          </li>
+        </ul>
+        <ul class="navbar-nav ml-2">
+        <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href='#' id="navbarDropdown" role="button" data-toggle="dropdown"> Welcome {{request.user}}</a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="/dashboard">Dashboard</a>
+          <a class="dropdown-item" href="/logout">Logout</a>
+
+                </div>
+              </li>
+              </ul>
+      </nav>
+<div class="footer1">
+  <p>Copyright © 2021 by Crime Report. All Rights Reserved.</p>
+</div>
+
+<div class="login-box">
+    <h2>Welcome {{request.user}}</h2>
+    <!-- <form action="" class="form"> -->
+    <div id="matter">
+      <div class="user-box">
+        <label class="label" for="">Name: &nbsp{{request.user.first_name}} {{request.user.last_name}} </label><br>
+      </div>
+    <br>  <div class="user-box">
+
+        <label class="label" for="">Email: &nbsp{{request.user.email}}</label><br>
+      </div>
+    <br>  <div class="user-box">
+      <!-- /.user-box -->
+
+      <div class="user-box">
+
+        <label class="label" for="">Phone: &nbsp{{request.user.extendeduser.phone_num}}</label><br>
+      </div>
+    <br>  <div class="user-box">
+
+        <label class="label" for="">Address: &nbsp{{request.user.extendeduser.addre}}</label><br>
+      </div>
+    <br>  <div class="user-box">
+
+        <label class="label" for="">DOB: &nbsp{{request.user.extendeduser.dob}}</label><br>
+      </div>
+
+      <!-- /.user-box -->
+</div>
+
+  </div>
+  <!-- /.login-box -->
+  <br>
+<div id="but">
+  <a class="btn btn-primary" href="/my_complaints" role="button">My Complaints</a>
+
+</div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+</body>
+</html>

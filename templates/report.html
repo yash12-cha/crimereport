@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en" dir="ltr">
+  <head>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <meta charset="utf-8">
+    <title></title>
+    <style>
+#hello
+{
+  padding-bottom: 50px;
+  padding-left: 80px;
+  width:800px;
+}
+    #footer1
+      {
+          position: fixed;
+          left: 0;
+          bottom: 0;
+          width: 100%;
+          background-color: #04AA6D;
+          color: white;
+          padding-top: 10px;
+          text-align: center;
+      }
+      </style>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="/"><img src='{% static "img/logo1.png" %}' width="55px"></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item {% block homeactive %}  {% endblock homeactive %}">
+              <a class="nav-link" href="/sample">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item {% block aboutactive %}  {% endblock aboutactive %}" >
+              <a class="nav-link" href="/about1">About</a>
+            </li>
+            <li class="nav-item {% block contactactive %}  {% endblock contactactive %} ">
+              <a class="nav-link" href="/contact1">Contact</a>
+            </li>
+            <li class="nav-item {% block reportactive %}  {% endblock reportactive %} ">
+              <a class="nav-link" href="/report">Report</a>
+            </li>
+
+          </ul>
+          <ul class="navbar-nav ml-2">
+          <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href='#' id="navbarDropdown" role="button" data-toggle="dropdown"> Welcome {{request.user}}</a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="/dashboard">Dashboard</a>
+            <a class="dropdown-item" href="/logout">Logout</a>
+
+                  </div>
+                </li>
+                </ul>
+        </nav>
+
+        <div id="footer1">
+          <p>Copyright © 2021 by Crime Report. All Rights Reserved.</p>
+        </div>
+        {% if messages %}
+        {% for message in messages %}
+        <div class="alert alert-dismissible alert-success">
+
+          <button type="button" class="close" data-dismiss="alert">
+          ×
+          </button>
+        <strong>Message : </strong> {{ message }}
+        </div>
+        {% endfor %}
+        {% endif %}
+    <div class="container my-3"id="hello">
+<h3 style="text-align:center">Complaint Form</h3>
+<p style="text-align:center"> NOTE:-Before filling this form please read the points given below*.</p>
+<form method="post" action="/report">
+{% csrf_token %}
+<div class="form-group">
+    <label for="name">Name</label>
+    <input type="text" class="form-control" id="name" name="name"aria-describedby="name"required>
+  </div>
+
+  <div class="form-group">
+    <label for="email">Email address</label>
+    <input type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp" required>
+    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+  </div>
+
+  <div class="form-group">
+    <label for="phone">Phone Number</label>
+    <input type="tel" class="form-control" id="phone" name="phone"required>
+  </div>
+  <div class="form-group" >
+    <label for="complaint_title">Complaint Title</label>
+    <input type="text" class="form-control" id="complaint_title" name="complaint_title"aria-describedby="complaint_title"required>
+  </div>
+  <div class="form-group">
+    <label for="incident">Incident Category</label>
+    <input list="lists" class="form-control" id="incident" name="incident"aria-describedby="incident"required>
+    <datalist id="lists">
+      <option value="Accident">
+      <option value="Fraud">
+      <option value="Robbery">
+      <option value="Bullying">
+      <option value="Cyber Crime">
+        <option value="Other">
+    </datalist>
+  </div>
+  <div class="form-group">
+    <label for="content">Describe Your Complain</label>
+    <textarea class="form-control" name="content" id="content" cols="30" rows="5"></textarea required>
+  </div>
+  <div class="form-group">
+    <label for="happen">Where did this happen?</label>
+    <input type="text" class="form-control" id="happen" name="happen"aria-describedby="happen" required>
+  </div>
+  <div class="form-group">
+        <label class="control-label" for="date">Date of Incident</label>
+        <input class="form-control" id="date" name="date" placeholder="DD/MM/YYY" type="text"/ required>
+      </div>
+  <div style="text-align:center">
+  <button type="submit" class="btn btn-primary" >POST COMPLAIN</button>
+  </div>
+</form>
+<br>
+*Important:<br>
+1.Please fill the form Carefully. All fields are Mandatory.<br>
+2. Please provide the Email Address which is registered with us.<br>
+3. Please contact local police in case of an emergency.<br>
+4. In order to know the status of your report drop a mail at crimereport2803@gmail.com.<br>
+5. For any other support or query please visit our <a href="/contact1">Contact</a> page.
+</div>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+  </body>
+</html>

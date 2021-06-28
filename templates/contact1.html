@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+<head>
+<title>Crime Report | Contact Us</title>
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Pangolin&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Karla:wght@200&display=swap" rel="stylesheet">
+<link href='{% static 'css_sheet.css' %}' rel='stylesheet'>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500&display=swap" rel="stylesheet">
+<script src="https://kit.fontawesome.com/7549cc4c6e.js" crossorigin="anonymous"></script>
+<style>
+body, html
+{
+  height: 100%;
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.hero-image
+{
+  margin-top:0px;
+  padding-top:50px;
+  background-image: url('{% static "img/unnamed.jpg" %}');
+  height: 47%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+}
+.footer1
+{
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: #04AA6D;
+    color: white;
+    padding-top: 10px;
+    text-align: center;
+}
+</style>
+</head>
+<body style="margin:0">
+{% comment %} <div id="nav">
+  <span style="padding-top:12px;padding-left:15px"id="spa"><img src='{% static "img/logo1.png" %}' width="55px"></span>
+  <span id="spa"><a class="active" href="{% url 'home' %}" target="_blank">Home</a></span>
+  <span id="spa"><a class="active" href="{% url 'about' %}" target="_blank">About Us</a></span>
+  <span id="spa"><a class="active" href="{% url 'contact' %}" target="_blank">Contact Us</a></span>
+
+</div> {% endcomment %}
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="/"><img src='{% static "img/logo1.png" %}' width="55px"></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item {% block homeactive %}  {% endblock homeactive %}">
+          <a class="nav-link" href="/sample">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item {% block aboutactive %}  {% endblock aboutactive %}" >
+          <a class="nav-link" href="/about1">About</a>
+        </li>
+        <li class="nav-item {% block contactactive %}  {% endblock contactactive %} ">
+          <a class="nav-link" href="/contact1">Contact</a>
+        </li>
+        <li class="nav-item {% block reportactive %}  {% endblock reportactive %} ">
+          <a class="nav-link" href="/report">Report</a>
+        </li>
+
+      </ul>
+      <ul class="navbar-nav ml-2">
+      <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" href='#' id="navbarDropdown" role="button" data-toggle="dropdown"> Welcome {{request.user}}</a>
+      <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+      <a class="dropdown-item" href="/dashboard">Dashboard</a>
+        <a class="dropdown-item" href="/logout">Logout</a>
+
+              </div>
+            </li>
+            </ul>
+    </nav>
+<div class="hero-image">
+</div>
+<p id="cont"> Email us with any questions or inquiries or call +91 12345-67890. We would be happy to answer your questions and solve your problem.
+  Crime Report will get back to you as soon as possible. That's a promise!
+  If you are living nearby, come visit at one of our comfortable offices.</p>
+<div>
+  <h1 id="h3">Get in Touch</h1>
+  <div id="con">
+  For support or any questions:<br>
+  <br><i class="fas fa-envelope" id="mail"></i>   crimereport2803@gmail.com<br>
+  <br><i class="fas fa-phone" id="phone"></i>  +91 12345-67890<br>
+  <br><i class="fas fa-map-marker-alt" id="map"></i> 39, 3rd Bhoiwada, Sonawala Bldg, Opp Bihari Baug, C.P.Tank<br>
+  &ensp; &ensp;&ensp;Mumbai,Maharashtra-400004
+  </div>
+</div>
+
+<div class="footer1">
+  <p>Copyright © 2021 by Crime Report. All Rights Reserved.</p>
+</div>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+</body>
+</html>
